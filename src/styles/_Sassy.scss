@@ -1,0 +1,54 @@
+// $mainHeight: calc(100vh - 150px);
+$mainHeight: calc(100vh - #{$headerHeight});
+$bgColor: teal;
+
+.Sassy__main {
+  background-color: $bgColor;
+  height: $mainHeight;
+  width: 100%;
+  overflow: hidden;
+
+  @include flexBox;
+
+  %box {
+    height: 200px;
+    width: 200px;
+    margin: 10px;
+    background-color: tomato;
+  }
+
+  .box-1 {
+    @extend %box;
+  }
+  .box-2 {
+    @extend %box;
+    background-color: purple;
+  }
+  .box-3 {
+    @extend %box;
+  }
+
+  .email-container {
+    .form {
+
+    }
+    h3 {
+      
+    }
+  }
+}
+
+
+
+$numBoxes: 3;
+
+@function step($num) {
+  @return #{$num * 50}px;
+}
+
+@for $i from 1 through $numBoxes {
+  .box-#{$i} {
+    position: relative;
+    top: step($i);
+  }
+}

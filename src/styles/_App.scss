@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+$headerHeight: 150px;
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: $headerHeight;
+  color: white;
+} 
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@mixin flexBox($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin position($position: relative, $left: 0, $right: 0, $x: 0, $y: 0) {
+  position: $position;
+  left: $left;
+  right: $right;
+  transform: translate($x, $y);
+}
