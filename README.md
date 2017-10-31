@@ -22,7 +22,7 @@ Below are commands I use to install Sass in my React projects. Notice there are 
 ```
 
 
-#### .bash_profile (and .bashrc)
+#### Editing .bash_profile (or .bashrc)
 Here are some steps I took once so I could always set up Sass quickly in any React app. It involves editing a hidden file in your home folder. These steps are not required. You can simply follow the steps Missy outlines if you prefer. 
 
 - In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
@@ -44,4 +44,21 @@ Here are some steps I took once so I could always set up Sass quickly in any Rea
   }
 ```
 
-#### Partials
+## Partials
+Sass will take your .scss files and create a .css file for each one. So if your React has many components, each with its own .scss file for styling, a .css file will be created for each, leading to many, many style files throughout your app. "Partials" are the exceptions. These are .scss files which do not get a .css copy. Partials are simply .scss files that begin with an underscore ("_").
+
+One of the first things I do when starting a project with Sass is to create a main .scss file. I often call it "main.scss" and put it either at the top level of my project folder or inside a "styles" folder. My goal is to make one main .scss into which I import all my partials. Then I get just one .css file, which is what my app imports (in just one place) and uses everywhere.
+
+- Create a main.scss file. When you run ```npm start```, it will create a .css file to match.
+- Create partial .scss files by putting an underscore ("_") at the start of the name.
+- Import all your partials into the main .scss file. The order in which you import them can sometimes matter, since the first imports are applied first and then the later imports will tweak those styles if there are any conflicts. So if you use a reset CSS file, you should usually put that at the top.
+```sass
+  @import './reset';
+  @import './App';
+  @import './components/Home';
+  @import './components/Login';
+  @import './components/Admin';
+```
+
+
+http://sass-lang.com/guide
