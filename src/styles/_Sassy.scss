@@ -10,13 +10,16 @@ $bgColor: teal;
 
   @include flexBox;
 
+  // The % symbol lets you create styles that are not directly 
+  // applied to any actual element but which can be extended
   %box {
     height: 200px;
     width: 200px;
     margin: 10px;
     background-color: tomato;
   }
-
+  
+  // @extend
   .box-1 {
     @extend %box;
   }
@@ -27,25 +30,18 @@ $bgColor: teal;
   .box-3 {
     @extend %box;
   }
-
-  .email-container {
-    .form {
-
-    }
-    h3 {
-      
-    }
-  }
 }
 
 
 
 $numBoxes: 3;
 
+// function
 @function step($num) {
   @return #{$num * 50}px;
 }
 
+// loop
 @for $i from 1 through $numBoxes {
   .box-#{$i} {
     position: relative;
