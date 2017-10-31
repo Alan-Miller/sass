@@ -8,6 +8,7 @@ Missy's setup repository is a helpful way to understand how to set up Sass in yo
 https://github.com/missyjeanbeutler/sass-demo
 
 #### Terminal commands
+Below are commands I use to install Sass in my React projects. Notice there are commands for installing Sass, adding scripts to your package.json file, installing npm-run-all, and even adding a line to your .gitignore file. I wrote these commands by following Missy's tutorial to understand what things I needed to set up and then figuring out how to do all those steps from the command line. For example, ```json -If package.json -e``` lets you add a line to the JSON object in the package.json file (```-e``` takes the stuff in quotation marks that follows and evaluates it rather than simply treating it as a simple string value). If things are starting to sound too nerdy or too dense and you just came here to install Sass and get going, the commands below will install Sass in your React project (make sure you are in the main project folder). They follow the steps from Missy's tutorial but do it all from Terminal.
 
 ``` bash
   npm install node-sass-chokidar
@@ -27,9 +28,11 @@ Here are some steps I took once so I could always set up Sass quickly in any Rea
 - In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
 - If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
 - Open your .bash_profile using ```open -a Visual\ Studio\ Code ~/.bash_profile```. This tells your computer to open .bash_profile in Visual Studio Code (remember to escape spaces in the name using '\ '). If you are using a different code editor, you will have to put that name here instead.
-- Once you have opened the .bash_profile in your editor, you can make aliases or functions to speed up and simplify the sorts of things you do in your command line. First of all, I recommend making a little shortcut for quickly opening your .bash_profile in the future. Try ```alias bashprofile='open -a Visual\ Studio\ Code ~/.bash_profile'```. Once you do that, you can type ```bashprofile``` in your command line—from any folder—and it will open that file in your editor. (NOTE: When you create new aliases or functions, you will have to open a new Terminal/CLI tab or window before you can use them.)
+- Once you have opened the .bash_profile in your editor, you can make aliases or functions to speed up and simplify the sorts of things you do in your command line. First of all, I recommend making a little shortcut for quickly opening your .bash_profile in the future. Try ```alias bashprofile='open -a Visual\ Studio\ Code ~/.bash_profile'```. Once you do that, you can type ```bashprofile``` in your command line—from any folder—and it will open that file in your editor. You can make aliases that jump straight to certain folders from anywhere else (e.g., ```alias 26p='cd ~/devmtn/dm26/projects'```)
+- (NOTE: When you create new aliases or functions, you will have to open a new Terminal/CLI tab or window before you can use them.)
+- Another
 
-alias bashpro='open -a Visual\ Studio\ Code ~/.bash_profile'
+
 
 ``` bash
 sassme() {
