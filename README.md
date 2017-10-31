@@ -24,9 +24,11 @@ sassme() {
 
 
 #### .bash_profile (and .bashrc)
-Here are some steps I took to set up Sass quickly in any React app. These steps are not required. You can simply follow the steps Missy outlines if you prefer. These steps involve editing a hidden file in your home folder.
+Here are some steps I took once so I could always set up Sass quickly in any React app. It involves editing a hidden file in your home folder. These steps are not required. You can simply follow the steps Missy outlines if you prefer. 
 
 - In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
+- If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
+- Open your .bash_profile using ```open -a Visual\ Studio\ Code ~/.bash_profile```. This tells your computer to open .bash_profile in Visual Studio Code (remember to escape spaces in the name using '\ '). If you are using a different code editor, you will have to put that name here instead.
 
 alias bashpro='open -a Visual\ Studio\ Code ~/.bash_profile'
 ls -al
