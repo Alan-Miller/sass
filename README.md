@@ -51,7 +51,7 @@ One of the first things I do when starting a project with Sass is to create a ma
 
 - Create a main.scss file. When you run ```npm start```, it will create a .css file to match.
 - Create partial .scss files by putting an underscore ("_") at the start of the name.
-- Import all your partials into the main .scss file. The order in which you import them can sometimes matter, since the first imports are applied first and then the later imports will tweak those styles if there are any conflicts. So if you use a reset CSS file, you should usually put that at the top. Notice than when importing partial files, you do NOT include the underscore in the import statement, even though the actual file name starts with underscore. You also do NOT include the .scss file extension. Here is an example of imports. All of them are partials.
+- Import all your partials into the main .scss file. The order in which you import them can sometimes matter, since the first imports are applied first and then the later imports will tweak those styles if there are any conflicts. So if you use a reset CSS file, you should usually put that at the top. Notice than when importing partial files, you do NOT include the underscore in the import statement, even though the actual file name starts with an underscore. You also do NOT include the .scss file extension. Here is an example of imports. All of them are partials. For another example, just look in the main.scss file in this repo.
 ```sass
   /* All of these are partials, though we do not add the "_" or the file extension. */
   @import './reset'; /* reset is first because it sets default styles */
@@ -60,6 +60,71 @@ One of the first things I do when starting a project with Sass is to create a ma
   @import './components/Login';
   @import './components/Admin';
 ```
+
+## Variables
+Variables are great. Use them to apply a specific value to multiple properties throughout your app. Then if the value needs to change, you can simply change the definition of the variable and the change will automatically be applied throughout the app. Take this style for example. Notice there is a pixel value for the height of a nav. Notice also that the .mainSection uses CSS's native calc() tool to calculate the value of its height by subtracting 150px from the total height of the page (in this case, 100vh).
+  ```sass
+    .nav {
+      height: 150px;
+    }
+    .mainSection {
+      height: calc(100vh - 150px);
+    }
+  ```
+What if we want to use that 150px value in many places within the app?
+- Define a variable using "$". 
+  ```$navHeight: 150px;```
+- Apply the variable by simply using the variable name where the value would be.
+  ```sass
+    .nav {
+      height: $navHeight;
+    }
+  ```
+
+## Nesting
+Nesting lets you create more targeted or modular styles without adding unique classes to everything or creating long, cumbersome CSS selector. You do this by mirroring (somewhat) the structure of your HTML/JSX elements within your styles.
+```sass
+  .App {
+    background-color: indianred;
+    font-size: 16px;
+    .logo { 
+      /* These apply to any .logo element inside .App element */
+      animation: App-logo-spin infinite 20s linear;
+      height: 80px;
+      position: absolute;
+    }
+    .header { 
+      /* These apply to any .header element inside .App element */
+      background-color: #222;
+      color: white;
+    }
+    .Login {
+      .header {
+        /*  */
+        /* These apply only to .header elements inside .Login element (inside .App) */
+        /* Any .header inside .Login will inherit background-color: #222 but will have 
+        color: black (because this style is more specific). Any .header not inside 
+        .Login will have color: white, not color: black. */
+        color: black; 
+      }
+    }
+  }
+```
+
+## Evaluation with "#{}"
+Sometimes you need Sass to evaluate a variable within a more complex style expression. For this, wrap the thing to be evaluated in ${}. Notice I used it below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there because it is evaluated as a variable value.
+  ```sass
+    .nav {
+      height: $navHeight;
+    }
+    .mainSection {
+      height: calc(100vh - #{$navHeight});
+    }
+  ```
+
+
+
+ variables, nesting, mixins, @extend, functions, and loops
 
 
 http://sass-lang.com/guide
