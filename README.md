@@ -10,14 +10,14 @@ https://github.com/missyjeanbeutler/sass-demo
 #### Terminal commands
 
 ``` bash
-    npm install node-sass-chokidar
-    json -If package.json -e 'this.scripts["build-css"] = "node-sass-chokidar src/ -o src/"'
-    json -If package.json -e 'this.scripts["watch-css"] = "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"'
-    echo -e '\n# SASS \nsrc/**/*.css'>> .gitignore
-    npm i --save npm-run-all
-    json -If package.json -e 'this.scripts["start-js"] = "react-scripts start"'
-    json -If package.json -e 'this.scripts["start"] = "npm-run-all -p watch-css start-js"'
-    json -If package.json -e 'this.scripts["build"] = "npm run build-css && react-scripts build"'
+  npm install node-sass-chokidar
+  json -If package.json -e 'this.scripts["build-css"] = "node-sass-chokidar src/ -o src/"'
+  json -If package.json -e 'this.scripts["watch-css"] = "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"'
+  echo -e '\n# SASS \nsrc/**/*.css'>> .gitignore
+  npm i --save npm-run-all
+  json -If package.json -e 'this.scripts["start-js"] = "react-scripts start"'
+  json -If package.json -e 'this.scripts["start"] = "npm-run-all -p watch-css start-js"'
+  json -If package.json -e 'this.scripts["build"] = "npm run build-css && react-scripts build"'
 ```
 
 
