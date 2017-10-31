@@ -101,7 +101,11 @@ Nesting lets you create more targeted or modular styles without adding unique cl
     .Login {
       .header {
         color: black; 
-        /* This applies only to .header elements inside .Login element (inside .App) 
+        /* This applies only to .header elements inside .Login element (inside .App).
+        It is similar to writing a selector like this: 
+        .App .Login .header {
+          color: black;
+        }
         Any .header inside .Login will inherit background-color: #222 but will have 
         color: black (because this style is more specific). Any .header not inside 
         .Login will have color: white, not color: black. */
@@ -109,6 +113,7 @@ Nesting lets you create more targeted or modular styles without adding unique cl
     }
   }
 ```
+Most of the time I recommend against nesting more than three or four levels deep.
 
 ## Evaluation with "#{}"
 Sometimes you need Sass to evaluate a variable within a more complex style expression. For this, wrap the thing to be evaluated in ${}. Notice I used it below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there because it is evaluated as a variable value.
