@@ -97,12 +97,17 @@ Nesting lets you create more targeted or modular styles without adding unique cl
       /* These apply to any .header element inside .App element */
       background-color: #222;
       color: white;
+      font: { /* You can also nest certain properties like this */
+        family: 'Gill Sans', sans-serif; /* sets font-family */
+        style: bold; /* sets font-style */
+        size: 1.2rem; /* sets font-size */
+      }
     }
     .Login {
       .header {
         color: black; 
         /* This applies only to .header elements inside .Login element (inside .App).
-        It is similar to writing a selector like this: 
+        It is similar to writing a normal CSS selector like this: 
         .App .Login .header {
           color: black;
         }
@@ -113,7 +118,7 @@ Nesting lets you create more targeted or modular styles without adding unique cl
     }
   }
 ```
-Most of the time I recommend against nesting more than three or four levels deep.
+Most of the time I recommend against nesting more than three or four levels deep. You don't have to perfectly mirror the structure of your HTML/JSX elements. Just nest enough to make your app modular, applying unique styles to the more deeply nested elements. If you nest too much, you'll find your styles break every time you make a little change to the structure of your HTML/JSX.
 
 ## Evaluation with "#{}"
 Sometimes you need Sass to evaluate a variable within a more complex style expression. For this, wrap the thing to be evaluated in ${}. Notice I used it below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there because it is evaluated as a variable value.
@@ -126,9 +131,27 @@ Sometimes you need Sass to evaluate a variable within a more complex style expre
     }
   ```
 
+## Extending styles
+Sass lets you borrow styles from one selector to another with @extend, removing the need for lots of copy and paste. Just use @extend and pick a selector with styles you want to borrow. Here, the .secondaryImages uses ```@extend: .mainImage;``` to copy all the styles from .mainImage, and then it sets a different background-image for itself.
+```sass 
+  .mainImage {
+    display: inline-block;
+    background-image: url('../../imgs/main.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .secondaryImage {
+    @extend .mainImage;
+    background-image: url('../../imgs/secondary.jpg');
+  }
+```
+
+## Mixins are fun.
 
 
- variables, nesting, mixins, @extend, functions, and loops
+ mixins, @extend, functions, and loops
 
 
 http://sass-lang.com/guide
