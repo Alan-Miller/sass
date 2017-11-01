@@ -150,9 +150,10 @@ Sass lets you borrow styles from one selector to another with @extend, removing 
     background-image: url('../../imgs/secondary.jpg');
   }
 ```
+### "%"
 <details><summary>Bonus knowledge: using "%" with @extend</summary><p>
   
-  HINT: You can use "%" to create a sort of "ghost selector" where you create some styles without giving them to any existing element. In other words, the styles only exist to be extended. Then you have other selectors use @extend to copy those styles to places where you need them. The "%" tells Sass that these styles should not be rendered into CSS unless they are extended. Here is an example. The %fancyDiv selector does not by itself add any styles to any element, but .Login and .Home pull the styles off of %fancyDiv using @extend, and then each one adds some other styles.
+  Pro tip: You can use "%" to create a sort of "ghost selector" where you create some styles without giving them to any existing element. In other words, the styles only exist to be extended. Then you have other selectors use @extend to copy those styles to places where you need them. The "%" tells Sass that these styles should not be rendered into CSS unless they are extended. Here is an example. The %fancyDiv selector does not by itself add any styles to any element, but .Login and .Home pull the styles off of %fancyDiv using @extend, and then each one adds some other styles.
   ```sass
     %fancyDiv {
       border-radius: 7px;
