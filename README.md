@@ -177,12 +177,49 @@ HINT: You can use "%" to create a sort of "ghost selector" where you create some
 - To define a mixin, use @mixin and give it a name.
 - To apply a mixin, use @include and then use the mixin name, (optionally) passing in variables like a function.
 ```sass
-  C
+  @mixin square($side) {
+    height: $side;
+    width: $side;
+  }
+
+  .box1 {
+    @include square(100px);
+  }
+
+  .box2 {
+    @include square(300px);
+  }
+```
+You can also set default values for mixins using colons. Failing to pass an expected value into the mixin above will lead to an error, but failing to pass in a value to a mixin that has a default value will simply lead to the default value being used. Below is a mixin that sets default flex values for a parent container that flexes its children elements. Notice there is no variable passed into the display property because I always want it to be set to flex when this mixin is in use.
+```sass
+  @mixin flexo($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-contents: $justify;
+    align-items: $align;
+  }
+
+  /* Here, .photo-container uses the default values of flex without any changes. */
+  .photo-container {
+    @include flexo;
+  }
+
+  /* Here, .message-board passes a value in for the first two parameters (flex-direction and justify-contents). The result is that the parent flexes the children elements using ```flex-direction: column``` and ```justify-contents: flex-start```, as well as the default value of ```align-items: center```.
+  .message-board {
+    @include flexo(column, flex-start);
+  }  
+
+  /* Here, all default values are kept except we change the align-items value to flex-end. Since we are only passing in one of the values and it is not the first value (i.e., we are not passing in the values in order), we need to specify which variable we are defining by using the variable name and a colon, as well as the value. */
+  .bio-info {
+    @include flexo($align: flex-end);
+  }
+  
 ```
 
 
- mixins, functions, and loops
+
+ functions, and loops
 
 
-[Sass Basics](http://sass-lang.com/guide): http://sass-lang.com/guide
-[How to Use Sass Mixins](https://scotch.io/tutorials/how-to-use-sass-mixins): https://scotch.io/tutorials/how-to-use-sass-mixins
+Sass Basics: http://sass-lang.com/guide
+How to Use Sass Mixins: https://scotch.io/tutorials/how-to-use-sass-mixins
