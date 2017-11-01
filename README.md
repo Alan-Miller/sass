@@ -59,7 +59,7 @@ One of the first things I do when starting a project with Sass is to create a ma
 ```sass
   /* All of these are partials, though we do not add the "_" or the file extension. */
   @import './reset';            /* reset is first because it sets default styles */
-  @import './App';              /* App might come second if it has styles that apply to other components */
+  @import './App';              /* App might be second its styles apply to other components */
   @import './components/Home';  /* The order of these 3 might not matter if the styles are modular */
   @import './components/Login';
   @import './components/Admin';
@@ -77,8 +77,10 @@ Variables are great. Use them to apply a specific value to multiple properties t
   ```
 What if we want to use that 150px value in many places within the app?
 * Define a variable using "$". 
+
   ```$navHeight: 150px;```
 * Apply the variable by simply using the variable name where the value would be.
+
   ```sass
     .nav {
       height: $navHeight;
