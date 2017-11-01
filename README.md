@@ -25,12 +25,14 @@ Below are commands I use to install Sass in my React projects. Notice there are 
 #### Editing .bash_profile (or .bashrc)
 Here are some steps I took once so I could always set up Sass quickly in any React app. It involves editing a hidden file in your home folder. These steps are not required. You can simply follow the steps Missy outlines if you prefer. 
 
-- In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
-- If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
-- Open your .bash_profile using ```open -a Visual\ Studio\ Code ~/.bash_profile```. This tells your computer to open .bash_profile in Visual Studio Code (remember to escape spaces in the name using '\ '). If you are using a different code editor, you will have to put that name here instead.
-- Once you have opened the .bash_profile in your editor, you can make aliases or functions to speed up and simplify the sorts of things you do in your command line. First of all, I recommend making a little shortcut for quickly opening your .bash_profile in the future. Try ```alias bashprofile='open -a Visual\ Studio\ Code ~/.bash_profile'```. Once you do that, you can type ```bashprofile``` in your command line—from any folder—and it will open that file in your editor. You can make aliases that jump straight to certain folders from anywhere else (e.g., ```alias 26p='cd ~/devmtn/dm26/projects'```) or to shorten common commands (e.g., ```alias gs='git status'```).
-- (NOTE: When you create new aliases or functions, you will have to open a new Terminal/CLI tab or window before you can use them.)
-- You can also make a function. For instance, below is the function I use to install Sass. It includes all the commands from above and runs them all at once. I called it "sassme," but you can call it whatever you want. Now, any time I need to install Sass, I just ```cd``` into the project folder and then type ```sassme``` and it's done.
+<details>
+<summary>Creating aliases and functions in .bash_profile</summary>
+* In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
+* If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
+* Open your .bash_profile using ```open -a Visual\ Studio\ Code ~/.bash_profile```. This tells your computer to open .bash_profile in Visual Studio Code (remember to escape spaces in the name using '\ '). If you are using a different code editor, you will have to put that name here instead.
+* Once you have opened the .bash_profile in your editor, you can make aliases or functions to speed up and simplify the sorts of things you do in your command line. First of all, I recommend making a little shortcut for quickly opening your .bash_profile in the future. Try ```alias bashprofile='open -a Visual\ Studio\ Code ~/.bash_profile'```. Once you do that, you can type ```bashprofile``` in your command line—from any folder—and it will open that file in your editor. You can make aliases that jump straight to certain folders from anywhere else (e.g., ```alias 26p='cd ~/devmtn/dm26/projects'```) or to shorten common commands (e.g., ```alias gs='git status'```).
+* (NOTE: When you create new aliases or functions, you will have to open a new Terminal/CLI tab or window before you can use them.)
+* You can also make a function. For instance, below is the function I use to install Sass. It includes all the commands from above and runs them all at once. I called it "sassme," but you can call it whatever you want. Now, any time I need to install Sass, I just ```cd``` into the project folder and then type ```sassme``` and it's done.
 ``` bash
   sassme() {
       npm install node-sass-chokidar && 
@@ -43,15 +45,16 @@ Here are some steps I took once so I could always set up Sass quickly in any Rea
       json -If package.json -e 'this.scripts["build"] = "npm run build-css && react-scripts build"'
   }
 ```
+</details>
 
 ## Partials
 Sass will take your .scss files and create a .css file for each one. So if your React has many components, each with its own .scss file for styling, a .css file will be created for each, leading to many, many style files throughout your app. "Partials" are the exceptions. These are .scss files which do not get a .css copy. Partials are simply .scss files that begin with an underscore ("_").
 
 One of the first things I do when starting a project with Sass is to create a main .scss file. I often call it "main.scss" and put it either at the top level of my project folder or inside a "styles" folder. My goal is to make one main .scss into which I import all my partials. Then I get just one .css file, which is what my app imports (in just one place) and uses everywhere.
 
-- Create a main.scss file. When you run ```npm start```, it will create a .css file to match.
-- Create partial .scss files by putting an underscore ("_") at the start of the name.
-- Import all your partials into the main .scss file. The order in which you import them can sometimes matter, since the first imports are applied first and then the later imports will tweak those styles if there are any conflicts. So if you use a reset CSS file, you should usually put that at the top. Notice than when importing partial files, you do NOT include the underscore in the import statement, even though the actual file name starts with an underscore. You also do NOT include the .scss file extension. Here is an example of imports. All of them are partials. For another example, just look in the main.scss file in this repo.
+* Create a main.scss file. When you run ```npm start```, it will create a .css file to match.
+* Create partial .scss files by putting an underscore ("_") at the start of the name.
+* Import all your partials into the main .scss file. The order in which you import them can sometimes matter, since the first imports are applied first and then the later imports will tweak those styles if there are any conflicts. So if you use a reset CSS file, you should usually put that at the top. Notice than when importing partial files, you do NOT include the underscore in the import statement, even though the actual file name starts with an underscore. You also do NOT include the .scss file extension. Here is an example of imports. All of them are partials. For another example, just look in the main.scss file in this repo.
 ```sass
   /* All of these are partials, though we do not add the "_" or the file extension. */
   @import './reset'; /* reset is first because it sets default styles */
@@ -72,9 +75,9 @@ Variables are great. Use them to apply a specific value to multiple properties t
     }
   ```
 What if we want to use that 150px value in many places within the app?
-- Define a variable using "$". 
+* Define a variable using "$". 
   ```$navHeight: 150px;```
-- Apply the variable by simply using the variable name where the value would be.
+* Apply the variable by simply using the variable name where the value would be.
   ```sass
     .nav {
       height: $navHeight;
@@ -199,7 +202,7 @@ You can also set default values for mixins using colons. Failing to pass an expe
     align-items: $align;
   }
 
-  /* Here, .photo-container uses the default values of flex without any changes. */
+  /* Here, .photo-container uses the default values of flex without any changes. Children elements will be centered both vertically and horzontally. */
   .photo-container {
     @include flexo;
   }
