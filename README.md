@@ -184,5 +184,5 @@ HINT: You can use "%" to create a sort of "ghost selector" where you create some
  mixins, functions, and loops
 
 
-http://sass-lang.com/guide
-[How to Use Sass Mixins](https://scotch.io/tutorials/how-to-use-sass-mixins): How to Use Sass Mixins
+[Sass Basics](http://sass-lang.com/guide): http://sass-lang.com/guide
+[How to Use Sass Mixins](https://scotch.io/tutorials/how-to-use-sass-mixins): https://scotch.io/tutorials/how-to-use-sass-mixins
