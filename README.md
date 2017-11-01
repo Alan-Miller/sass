@@ -111,14 +111,14 @@ Nesting lets you create more targeted or modular styles without adding unique cl
     .Login {
       .header {
         color: black; 
-        /* This applies only to .header elements inside .Login element (inside .App).
+        /* This applies only to .header elements inside .Login element (inside .App). Any .header inside .Login will inherit background-color: #222 but will have 
+        color: black (because this style is more specific). Any .header not inside 
+        .Login will have color: white, not color: black.
         It is similar to writing a normal CSS selector like this: 
         .App .Login .header {
           color: black;
         }
-        Any .header inside .Login will inherit background-color: #222 but will have 
-        color: black (because this style is more specific). Any .header not inside 
-        .Login will have color: white, not color: black. */
+         */
       }
     }
   }
