@@ -27,6 +27,7 @@ Here are some steps I took once so I could always set up Sass quickly in any Rea
 
 <details>
 <summary>Creating aliases and functions in .bash_profile</summary>
+
 > * In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
 > * If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
 > * Open your .bash_profile using ```open -a Visual\ Studio\ Code ~/.bash_profile```. This tells your computer to open .bash_profile in Visual Studio Code (remember to escape spaces in the name using '\ '). If you are using a different code editor, you will have to put that name here instead.
@@ -46,6 +47,7 @@ Here are some steps I took once so I could always set up Sass quickly in any Rea
   }
 ```
 </details>
+<br/>
 
 ## Partials
 Sass will take your .scss files and create a .css file for each one. So if your React has many components, each with its own .scss file for styling, a .css file will be created for each, leading to many, many style files throughout your app. "Partials" are the exceptions. These are .scss files which do not get a .css copy. Partials are simply .scss files that begin with an underscore ("_").
