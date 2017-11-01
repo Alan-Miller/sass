@@ -76,9 +76,8 @@ Variables are great. Use them to apply a specific value to multiple properties t
     }
   ```
 What if we want to use that 150px value in many places within the app?
-* Define a variable using "$". 
+* Define a variable using "$" like this: ```$navHeight: 150px;```
 
-  ```$navHeight: 150px;```
 * Apply the variable by simply using the variable name where the value would be.
 
   ```sass
