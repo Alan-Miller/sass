@@ -204,7 +204,7 @@ You can also set default values for mixins using colons. Failing to pass an expe
     @include flexo;
   }
 
-  /* Here, .message-board passes a value in for the first two parameters (flex-direction and justify-contents). The result is that the parent flexes the children elements using ```flex-direction: column``` and ```justify-contents: flex-start```, as well as the default value of ```align-items: center```.
+  /* Here, .message-board passes a value in for the first two parameters (flex-direction and justify-contents). The result is that the parent flexes the children elements using "flex-direction: column" and "justify-contents: flex-start," as well as the default value of "align-items: center."
   .message-board {
     @include flexo(column, flex-start);
   }  
