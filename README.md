@@ -23,9 +23,9 @@ Below are commands I use to install Sass in my React projects. Notice there are 
 
 
 #### Editing .bash_profile (or .bashrc)
-Here are some steps I took once so I could always set up Sass quickly in any React app. It involves editing a hidden file in your home folder. These steps are not required. You can simply follow the steps Missy outlines if you prefer. 
+Here are some steps I took once so I could always set up Sass quickly in any React app. It involves editing a hidden file in your home folder. These steps are not required. You can simply follow the steps Missy outlines if you prefer. However, I find them invaluable.
 
-<details><summary>Instructions for creating aliases and functions in .bash_profile</summary><p>
+<details><summary>Steps for creating aliases and functions in .bash_profile</summary><p>
 
   1. In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
   1. If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
@@ -58,9 +58,9 @@ One of the first things I do when starting a project with Sass is to create a ma
 * Import all your partials into the main .scss file. The order in which you import them can sometimes matter, since the first imports are applied first and then the later imports will tweak those styles if there are any conflicts. So if you use a reset CSS file, you should usually put that at the top. Notice than when importing partial files, you do NOT include the underscore in the import statement, even though the actual file name starts with an underscore. You also do NOT include the .scss file extension. Here is an example of imports. All of them are partials. For another example, just look in the main.scss file in this repo.
 ```sass
   /* All of these are partials, though we do not add the "_" or the file extension. */
-  @import './reset'; /* reset is first because it sets default styles */
-  @import './App'; /* App might come second if it has styles that apply to other components */
-  @import './components/Home'; /* The order of these 3 might not matter if the styles are modular */
+  @import './reset';            /* reset is first because it sets default styles */
+  @import './App';              /* App might come second if it has styles that apply to other components */
+  @import './components/Home';  /* The order of these 3 might not matter if the styles are modular */
   @import './components/Login';
   @import './components/Admin';
 ```
