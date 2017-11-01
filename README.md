@@ -25,7 +25,7 @@ Below are commands I use to install Sass in my React projects. Notice there are 
 #### Editing .bash_profile (or .bashrc)
 Here are some steps I took once so I could always set up Sass quickly in any React app. It involves editing a hidden file in your home folder. These steps are not required. You can simply follow the steps Missy outlines if you prefer. 
 
-> <details><summary>Instructions for creating aliases and functions in .bash_profile</summary><p>
+<details><summary>Instructions for creating aliases and functions in .bash_profile</summary><p>
 
   * In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
   * If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
