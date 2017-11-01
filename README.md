@@ -86,6 +86,18 @@ What if we want to use that 150px value in many places within the app?
     }
   ```
 
+#### Evaluation with "#{}"
+Sometimes you need Sass to evaluate a variable within a more complex style expression. For this, wrap the thing to be evaluated in ${}. Notice I used #{} below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there but instead evaluates it as a variable.
+  ```sass
+    .nav {
+      height: $navHeight;
+    }
+    .mainSection {
+      height: calc(100vh - #{$navHeight});
+    }
+  ```
+
+
 ## Nesting
 Nesting lets you create more targeted or modular styles without adding unique classes to everything or creating long, cumbersome CSS selector. You do this by mirroring (somewhat) the structure of your HTML/JSX elements within your styles.
 ```sass
@@ -123,18 +135,8 @@ Nesting lets you create more targeted or modular styles without adding unique cl
 ```
 Most of the time I recommend against nesting more than three or four levels deep. You don't have to perfectly mirror the structure of your HTML/JSX elements. Just nest enough to make your app modular, applying unique styles to the more deeply nested elements. If you nest too much, you'll find your styles break every time you make a little change to the structure of your HTML/JSX.
 
-## Evaluation with "#{}"
-Sometimes you need Sass to evaluate a variable within a more complex style expression. For this, wrap the thing to be evaluated in ${}. Remember our $navHeight variable and our use of calc() in the Variables section above? Notice I used #{} below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there but instead evaluates it as a variable.
-  ```sass
-    .nav {
-      height: $navHeight;
-    }
-    .mainSection {
-      height: calc(100vh - #{$navHeight});
-    }
-  ```
 
-## Extending styles
+## Extend
 Sass lets you borrow styles from one selector to another with @extend, removing the need for lots of copy and paste. Just use @extend and pick a selector with styles you want to borrow. Here, the .secondaryImage selector uses ```@extend: .mainImage;``` to copy all the styles from .mainImage, and then it sets a different background-image for itself.
 ```sass 
   .mainImage {
@@ -181,7 +183,8 @@ Sass lets you borrow styles from one selector to another with @extend, removing 
 </p></details>
 <br/>
 
-## Mixins are fun. They work sort of like a combination of @extend and a sort of lightweight function because they copy styles to whatever selector includes them and they allow variables to be passed in as well. 
+## Mixins
+Mixins are fun. They work sort of like a combination of @extend and a sort of lightweight function because they copy styles to whatever selector includes them and they allow variables to be passed in as well. 
 - To define a mixin, use @mixin and give it a name.
 - To apply a mixin, use @include and then use the mixin name, (optionally) passing in variables like a function.
 ```sass
@@ -242,6 +245,8 @@ Check out the function and loop below. The function used in the Sassy component 
   }
 ```
 
+## A few helpful resources:
 
 Sass Basics: http://sass-lang.com/guide
+
 How to Use Sass Mixins: https://scotch.io/tutorials/how-to-use-sass-mixins
