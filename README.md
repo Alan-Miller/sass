@@ -224,9 +224,23 @@ You can also set default values for mixins using colons. Failing to pass an expe
   
 ```
 
+## Function and loops
+Check out the function and loop below. The function used in the Sassy component of this repo to create a function capable of of taking in a number, multiplying it by 50 (notice the use of "#{}), and returning the result as a px value. The loop is used to loop from 1 through the $numBoxes value (which is equal to 3) and select three different JSX elements (called .box-1, .box-2, and .box-3) and give them position: relative and a top value based on the result of passing the $i value into the step function.
+```sass
+  $numBoxes: 3;
 
+  @function step($num) {
+    @return #{$num * 50}px;
+  }
 
- functions, and loops
+  // loop
+  @for $i from 1 through $numBoxes {
+    .box-#{$i} {
+      position: relative;
+      top: step($i);
+    }
+  }
+```
 
 
 Sass Basics: http://sass-lang.com/guide
