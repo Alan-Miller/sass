@@ -25,28 +25,28 @@ Below are commands I use to install Sass in my React projects. Notice there are 
 #### Editing .bash_profile (or .bashrc)
 Here are some steps I took once so I could always set up Sass quickly in any React app. It involves editing a hidden file in your home folder. These steps are not required. You can simply follow the steps Missy outlines if you prefer. 
 
-  <details><summary>Instructions for creating aliases and functions in .bash_profile</summary><p>
+<details><summary>Instructions for creating aliases and functions in .bash_profile</summary><p>
 
-    1. In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
-    1. If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
-    1. Open your .bash_profile using ```open -a Visual\ Studio\ Code ~/.bash_profile```. This tells your computer to open .bash_profile in Visual Studio Code (remember to escape spaces in the name using '\ '). If you are using a different code editor, you will have to put that name here instead.
-    1. Once you have opened the .bash_profile in your editor, you can make aliases or functions to speed up and simplify the sorts of things you do in your command line. First of all, I recommend making a little shortcut for quickly opening your .bash_profile in the future. Try ```alias bashprofile='open -a Visual\ Studio\ Code ~/.bash_profile'```. Once you do that, you can type ```bashprofile``` in your command line—from any folder—and it will open that file in your editor. You can make aliases that jump straight to certain folders from anywhere else (e.g., ```alias 26p='cd ~/devmtn/dm26/projects'```) or to shorten common commands (e.g., ```alias gs='git status'```).
-    1. (NOTE: When you create new aliases or functions, you will have to open a new Terminal/CLI tab or window before you can use them.)
-    1. You can also make a function. For instance, below is the function I use to install Sass. It includes all the commands from above and runs them all at once. I called it "sassme," but you can call it whatever you want. Now, any time I need to install Sass, I just ```cd``` into the project folder and then type ```sassme``` and it's done.
-    ``` bash
-      sassme() {
-          npm install node-sass-chokidar && 
-          json -If package.json -e 'this.scripts["build-css"] = "node-sass-chokidar src/ -o src/"' &&
-          json -If package.json -e 'this.scripts["watch-css"] = "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"' &&
-          echo -e '\n# SASS \nsrc/**/*.css'>> .gitignore && 
-          npm i --save npm-run-all
-          json -If package.json -e 'this.scripts["start-js"] = "react-scripts start"' &&
-          json -If package.json -e 'this.scripts["start"] = "npm-run-all -p watch-css start-js"' &&
-          json -If package.json -e 'this.scripts["build"] = "npm run build-css && react-scripts build"'
-      }
-    ```
-  </p></details>
-  <br/>
+  1. In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
+  1. If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
+  1. Open your .bash_profile using ```open -a Visual\ Studio\ Code ~/.bash_profile```. This tells your computer to open .bash_profile in Visual Studio Code (remember to escape spaces in the name using '\ '). If you are using a different code editor, you will have to put that name here instead.
+  1. Once you have opened the .bash_profile in your editor, you can make aliases or functions to speed up and simplify the sorts of things you do in your command line. First of all, I recommend making a little shortcut for quickly opening your .bash_profile in the future. Try ```alias bashprofile='open -a Visual\ Studio\ Code ~/.bash_profile'```. Once you do that, you can type ```bashprofile``` in your command line—from any folder—and it will open that file in your editor. You can make aliases that jump straight to certain folders from anywhere else (e.g., ```alias 26p='cd ~/devmtn/dm26/projects'```) or to shorten common commands (e.g., ```alias gs='git status'```).
+  1. (NOTE: When you create new aliases or functions, you will have to open a new Terminal/CLI tab or window before you can use them.)
+  1. You can also make a function. For instance, below is the function I use to install Sass. It includes all the commands from above and runs them all at once. I called it "sassme," but you can call it whatever you want. Now, any time I need to install Sass, I just ```cd``` into the project folder and then type ```sassme``` and it's done.
+  ``` bash
+    sassme() {
+        npm install node-sass-chokidar && 
+        json -If package.json -e 'this.scripts["build-css"] = "node-sass-chokidar src/ -o src/"' &&
+        json -If package.json -e 'this.scripts["watch-css"] = "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"' &&
+        echo -e '\n# SASS \nsrc/**/*.css'>> .gitignore && 
+        npm i --save npm-run-all
+        json -If package.json -e 'this.scripts["start-js"] = "react-scripts start"' &&
+        json -If package.json -e 'this.scripts["start"] = "npm-run-all -p watch-css start-js"' &&
+        json -If package.json -e 'this.scripts["build"] = "npm run build-css && react-scripts build"'
+    }
+  ```
+</p></details>
+<br/>
 
 ## Partials
 Sass will take your .scss files and create a .css file for each one. So if your React has many components, each with its own .scss file for styling, a .css file will be created for each, leading to many, many style files throughout your app. "Partials" are the exceptions. These are .scss files which do not get a .css copy. Partials are simply .scss files that begin with an underscore ("_").
