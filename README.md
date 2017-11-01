@@ -124,7 +124,7 @@ Nesting lets you create more targeted or modular styles without adding unique cl
 Most of the time I recommend against nesting more than three or four levels deep. You don't have to perfectly mirror the structure of your HTML/JSX elements. Just nest enough to make your app modular, applying unique styles to the more deeply nested elements. If you nest too much, you'll find your styles break every time you make a little change to the structure of your HTML/JSX.
 
 ## Evaluation with "#{}"
-Sometimes you need Sass to evaluate a variable within a more complex style expression. For this, wrap the thing to be evaluated in ${}. Notice I used it below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there because it is evaluated as a variable value.
+Sometimes you need Sass to evaluate a variable within a more complex style expression. For this, wrap the thing to be evaluated in ${}. Remember our $navHeight variable and our use of calc() in the Variables section above? Notice I used #{} below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there but instead evaluates it as a variable.
   ```sass
     .nav {
       height: $navHeight;
@@ -150,31 +150,35 @@ Sass lets you borrow styles from one selector to another with @extend, removing 
     background-image: url('../../imgs/secondary.jpg');
   }
 ```
-HINT: You can use "%" to create a sort of "ghost selector" where you create some styles without giving them to any existing element. In other words, the styles only exist to be extended. Then you have other selectors use @extend to copy those styles to places where you need them. The "%" tells Sass that these styles should not be rendered into CSS unless they are extended. Here is an example. The %fancyDiv selector does not by itself add any styles to any element, but .Login and .Home pull the styles off of %fancyDiv using @extend, and then each one adds some other styles.
-```sass
-  %fancyDiv {
-    border-radius: 7px;
-    border: solid medium cornflowerblue;
-    background-color: tomato;
-    height: 200px;
-    width: 200px;
-    color: white;
-  }
-
-  .Login {
-    div {
-      @extend %fancyDiv;
-      border: solid thin black;
+<details><summary>Bonus knowledge: using "%" with @extend</summary><p>
+  
+  HINT: You can use "%" to create a sort of "ghost selector" where you create some styles without giving them to any existing element. In other words, the styles only exist to be extended. Then you have other selectors use @extend to copy those styles to places where you need them. The "%" tells Sass that these styles should not be rendered into CSS unless they are extended. Here is an example. The %fancyDiv selector does not by itself add any styles to any element, but .Login and .Home pull the styles off of %fancyDiv using @extend, and then each one adds some other styles.
+  ```sass
+    %fancyDiv {
+      border-radius: 7px;
+      border: solid medium cornflowerblue;
+      background-color: tomato;
+      height: 200px;
+      width: 200px;
+      color: white;
     }
-  }
 
-  .Home {
-    .footer div {
-      border: solid thin #444;
+    .Login {
+      div {
+        @extend %fancyDiv;
+        border: solid thin black;
+      }
     }
-    color: black;
-  }
-```
+
+    .Home {
+      .footer div {
+        border: solid thin #444;
+      }
+      color: black;
+    }
+  ```
+</p></details>
+<br/>
 
 ## Mixins are fun. They work sort of like a combination of @extend and a sort of lightweight function because they copy styles to whatever selector includes them and they allow variables to be passed in as well. 
 - To define a mixin, use @mixin and give it a name.
