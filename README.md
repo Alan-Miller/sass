@@ -27,9 +27,11 @@ Here are some steps I took once so I could always set up Sass quickly in any Rea
 
 > <details><summary>Instructions for creating aliases and functions in .bash_profile</summary>
 
-  (* In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.)
-  * If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
-  * Open your .bash_profile using ```open -a Visual\ Studio\ Code ~/.bash_profile```. This tells your computer to open .bash_profile in Visual Studio Code (remember to escape spaces in the name using '\ '). If you are using a different code editor, you will have to put that name here instead.
+  >* In your Terminal (or other command line interface), use ```cd``` to go to your home folder (usually, opening a new window will start you off in the home folder). In home, you can type ```ls -al``` to see all files, including hidden files. Look to see if you have a .bash_profile or .bashrc file there.
+  >* If you don't have a .bash_profile, you can create one using ```touch .bash_profile``` (again, make sure you are in your home folder).
+  >* Open your .bash_profile using ```open -a Visual\ Studio\ Code ~/.bash_profile```. This tells your computer to open .bash_profile in Visual Studio Code (remember to escape spaces in the name using '\ '). If you are using a different code editor, you will have to put that name here instead.
+
+
   * Once you have opened the .bash_profile in your editor, you can make aliases or functions to speed up and simplify the sorts of things you do in your command line. First of all, I recommend making a little shortcut for quickly opening your .bash_profile in the future. Try ```alias bashprofile='open -a Visual\ Studio\ Code ~/.bash_profile'```. Once you do that, you can type ```bashprofile``` in your command line—from any folder—and it will open that file in your editor. You can make aliases that jump straight to certain folders from anywhere else (e.g., ```alias 26p='cd ~/devmtn/dm26/projects'```) or to shorten common commands (e.g., ```alias gs='git status'```).
   * (NOTE: When you create new aliases or functions, you will have to open a new Terminal/CLI tab or window before you can use them.)
   * You can also make a function. For instance, below is the function I use to install Sass. It includes all the commands from above and runs them all at once. I called it "sassme," but you can call it whatever you want. Now, any time I need to install Sass, I just ```cd``` into the project folder and then type ```sassme``` and it's done.
