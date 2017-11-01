@@ -132,7 +132,7 @@ Sometimes you need Sass to evaluate a variable within a more complex style expre
   ```
 
 ## Extending styles
-Sass lets you borrow styles from one selector to another with @extend, removing the need for lots of copy and paste. Just use @extend and pick a selector with styles you want to borrow. Here, the .secondaryImages uses ```@extend: .mainImage;``` to copy all the styles from .mainImage, and then it sets a different background-image for itself.
+Sass lets you borrow styles from one selector to another with @extend, removing the need for lots of copy and paste. Just use @extend and pick a selector with styles you want to borrow. Here, the .secondaryImage selector uses ```@extend: .mainImage;``` to copy all the styles from .mainImage, and then it sets a different background-image for itself.
 ```sass 
   .mainImage {
     display: inline-block;
@@ -147,11 +147,42 @@ Sass lets you borrow styles from one selector to another with @extend, removing 
     background-image: url('../../imgs/secondary.jpg');
   }
 ```
+HINT: You can use "%" to create a sort of "ghost selector" where you create some styles without giving them to any existing element. In other words, the styles only exist to be extended. Then you have other selectors use @extend to copy those styles to places where you need them. The "%" tells Sass that these styles should not be rendered into CSS unless they are extended. Here is an example. The %fancyDiv selector does not by itself add any styles to any element, but .Login and .Home pull the styles off of %fancyDiv using @extend, and then each one adds some other styles.
+```sass
+  %fancyDiv {
+    border-radius: 7px;
+    border: solid medium cornflowerblue;
+    background-color: tomato;
+    height: 200px;
+    width: 200px;
+    color: white;
+  }
 
-## Mixins are fun.
+  .Login {
+    div {
+      @extend %fancyDiv;
+      border: solid thin black;
+    }
+  }
+
+  .Home {
+    .footer div {
+      border: solid thin #444;
+    }
+    color: black;
+  }
+```
+
+## Mixins are fun. They work sort of like a combination of @extend and a sort of lightweight function because they copy styles to whatever selector includes them and they allow variables to be passed in as well. 
+- To define a mixin, use @mixin and give it a name.
+- To apply a mixin, use @include and then use the mixin name, (optionally) passing in variables like a function.
+```sass
+  C
+```
 
 
- mixins, @extend, functions, and loops
+ mixins, functions, and loops
 
 
 http://sass-lang.com/guide
+[How to Use Sass Mixins](https://scotch.io/tutorials/how-to-use-sass-mixins): How to Use Sass Mixins
