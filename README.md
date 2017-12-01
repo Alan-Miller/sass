@@ -48,7 +48,7 @@ Here are some steps I took once so I could always set up Sass quickly in any Rea
 </p></details>
 <br/>
 
-## Partials
+## Partials with "_"
 Sass will take your .scss files and create a .css file for each one. So if your React has many components, each with its own .scss file for styling, a .css file will be created for each, leading to many, many style files throughout your app. "Partials" are the exceptions. These are .scss files which do not get a .css copy. Partials are simply .scss files that begin with an underscore ("_").
 
 One of the first things I do when starting a project with Sass is to create a main .scss file. I often call it "main.scss" and put it either at the top level of my project folder or inside a "styles" folder. My goal is to make one main .scss into which I import all my partials. Then I get just one .css file, which is what my app imports (in just one place) and uses everywhere.
@@ -65,7 +65,7 @@ One of the first things I do when starting a project with Sass is to create a ma
   @import './components/Admin';
 ```
 
-## Variables
+## Variables with "$"
 Variables are great. Use them to apply a specific value to multiple properties throughout your app. Then if the value needs to change, you can simply change the definition of the variable and the change will automatically be applied throughout the app. Take this style for example. Notice there is a pixel value for the height of a nav. Notice also that the .mainSection uses CSS's native calc() tool to calculate the value of its height by subtracting 150px from the total height of the page (in this case, 100vh).
   ```sass
     .nav {
@@ -86,8 +86,8 @@ What if we want to use that 150px value in many places within the app?
     }
   ```
 
-#### Evaluation with "#{}"
-Sometimes you need Sass to evaluate a variable within a more complex style expression. For this, wrap the thing to be evaluated in ${}. Notice I used #{} below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there but instead evaluates it as a variable.
+#### Interpolation with "#{}"
+Sometimes you need Sass to interpolate a variable within a more complex style expression. For this, wrap the thing to be interpolated in ${}. Notice I used #{} below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there but instead interpolates it as a variable.
   ```sass
     .nav {
       height: $navHeight;
@@ -136,7 +136,7 @@ Nesting lets you create more targeted or modular styles without adding unique cl
 Most of the time I recommend against nesting more than three or four levels deep. You don't have to perfectly mirror the structure of your HTML/JSX elements. Just nest enough to make your app modular, applying unique styles to the more deeply nested elements. If you nest too much, you'll find your styles break every time you make a little change to the structure of your HTML/JSX.
 
 
-## Extend
+## Extending with "@extend"
 Sass lets you borrow styles from one selector to another with @extend, removing the need for lots of copy and paste. Just use @extend and pick a selector with styles you want to borrow. Here, the .secondaryImage selector uses ```@extend: .mainImage;``` to copy all the styles from .mainImage, and then it sets a different background-image for itself.
 ```sass 
   .mainImage {
@@ -152,7 +152,7 @@ Sass lets you borrow styles from one selector to another with @extend, removing 
     background-image: url('../../imgs/secondary.jpg');
   }
 ```
-### "%"
+### Placeholder selectors with "%"
 <details><summary>Bonus knowledge: using "%" with @extend</summary><p>
   
   Pro tip: You can use "%" to create a sort of "ghost selector" where you create some styles without giving them to any existing element. In other words, the styles only exist to be extended. Then you have other selectors use @extend to copy those styles to places where you need them. The "%" tells Sass that these styles should not be rendered into CSS unless they are extended. Here is an example. The %fancyDiv selector does not by itself add any styles to any element, but .Login and .Home pull the styles off of %fancyDiv using @extend, and then each one adds some other styles.
@@ -183,7 +183,7 @@ Sass lets you borrow styles from one selector to another with @extend, removing 
 </p></details>
 <br/>
 
-## Mixins
+## Mixins with "@mixin"
 Mixins are fun. They work sort of like a combination of @extend and a sort of lightweight function because they copy styles to whatever selector includes them and they allow variables to be passed in as well. 
 - To define a mixin, use @mixin and give it a name.
 - To apply a mixin, use @include and then use the mixin name, (optionally) passing in variables like a function.
@@ -227,7 +227,7 @@ You can also set default values for mixins using colons. Failing to pass an expe
   
 ```
 
-## Function and loops
+## Functions with "@function" and loops with "@for"
 Check out the function and loop below. The function used in the Sassy component of this repo to create a function capable of of taking in a number, multiplying it by 50 (notice the use of "#{}), and returning the result as a px value. The loop is used to loop from 1 through the $numBoxes value (which is equal to 3) and select three different JSX elements (called .box-1, .box-2, and .box-3) and give them position: relative and a top value based on the result of passing the $i value into the step function.
 ```sass
   $numBoxes: 3;
