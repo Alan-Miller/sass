@@ -183,7 +183,7 @@ Sass lets you borrow styles from one selector to another with @extend, removing 
 </p></details>
 <br/>
 
-## Mixins with "@mixin"
+## Mixins with "@mixin" and "@include"
 Mixins are fun. They work sort of like a combination of @extend and a sort of lightweight function because they copy styles to whatever selector includes them and they allow variables to be passed in as well. 
 - To define a mixin, use @mixin and give it a name.
 - To apply a mixin, use @include and then use the mixin name, (optionally) passing in variables like a function.
