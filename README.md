@@ -87,7 +87,7 @@ What if we want to use that 150px value in many places within the app?
   ```
 
 #### Interpolation with "#{}"
-Sometimes you need Sass to interpolate a variable within a more complex style expression. For this, wrap the thing to be interpolated in ${}. Notice I used #{} below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there but instead interpolates it as a variable.
+Sometimes you need Sass to interpolate a variable within a more complex style expression. For this, wrap the thing to be interpolated in #{}. Notice I used #{} below in the .mainSection height property. This way, CSS's calc() tool is not confused by the variable I put there but instead interpolates it as a variable.
   ```sass
     .nav {
       height: $navHeight;
