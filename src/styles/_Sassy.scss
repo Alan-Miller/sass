@@ -7,14 +7,13 @@ $bgColor: teal;
   height: $mainHeight;
   width: 100%;
   overflow: hidden;
-
-  @include flexBox;
+  @include flexBox($align:flex-start);
 
   // The % symbol lets you create styles that are not directly 
   // applied to any actual element but which can be extended
   %box {
-    height: 200px;
-    width: 200px;
+    height: 20px;
+    width: 120px;
     margin: 10px;
     background-color: tomato;
   }
@@ -25,20 +24,33 @@ $bgColor: teal;
   }
   .box-2 {
     @extend %box;
-    background-color: purple;
+    // background-color: purple;
+    height: 20px;
+    width: 120px;
+    margin: 10px;
+    background-color: tomato;
   }
   .box-3 {
-    @extend %box;
+    height: 20px;
+    width: 120px;
+    margin: 10px;
+    background-color: tomato;
+  }
+  .box-4 {
+    height: 20px;
+    width: 120px;
+    margin: 10px;
+    background-color: tomato;
   }
 }
 
 
 
-$numBoxes: 3;
+$numBoxes: 4;
 
 // function
 @function step($num) {
-  @return #{$num * 50}px;
+  @return #{$num * 100}px;
 }
 
 // loop
@@ -46,5 +58,6 @@ $numBoxes: 3;
   .box-#{$i} {
     position: relative;
     top: step($i);
+    transform: rotate(#{$i * 25}deg);
   }
 }
